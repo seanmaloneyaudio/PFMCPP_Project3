@@ -114,17 +114,17 @@ Thing 4) Laptop
  */
 
 /*
-Thing 10)
+Thing 10) MIDI Controller
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) Keys
+    2) Pads
+    3) Knobs
+    4) Sliders
+    5) Buttons
 3 things it can do:
-    1)
-    2)
-    3)
+    1) Send MIDI note data
+    2) Send MIDI CC data
+    3) Send MIDI velocity data
  */
 
 /*
