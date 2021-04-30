@@ -114,7 +114,7 @@ Thing 4) Laptop
  */
 
 /*
-Thing 10) Arsenal Soccer Club
+Thing 10) Arsenal Football Club
 5 properties:
     1) Goalie
     2) Head Coach
