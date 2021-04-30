@@ -54,59 +54,59 @@ Thing: Car Wash
  */
 
 /*
-Thing 1)
+Thing 1) Restaurant
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) Number of tables
+    2) Number of employees
+    3) Restaurant name
+    4) Size of restaurant in square feet
+    5) Amount of profit each day
 3 things it can do:
-    1)
-    2)
-    3)
+    1) Feed hungry customers
+    2) Charge customers
+    3) Provide salary to employees
  */
 
 /*
-Thing 2)
+Thing 2) Family
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) Size of family
+    2) Number of kids
+    3) Number of parents
+    4) Mother's name
+    5) Father's name
 3 things it can do:
-    1)
-    2)
-    3)
+    1) Eat dinner together
+    2) Go to church
+    3) Bicker
  */
 
 /*
-Thing 3)
+Thing 3) Synthesizer
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) Number of keys
+    2) Number of synth voices
+    3) Name of synth
+    4) Output gain
+    5) Number of outputs
 3 things it can do:
-    1)
-    2)
-    3)
+    1) Play sound
+    2) Change output gain amount
+    3) Change number of outputs
  */
 
 /*
-Thing 4)
+Thing 4) Laptop
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) Model year
+    2) Amount of RAM
+    3) Amount of storage
+    4) Screen size
+    5) Manufacturer
 3 things it can do:
-    1)
-    2)
-    3)
+    1) Compile code
+    2) Browse the web
+    3) Play movies
  */
 
 
