@@ -147,9 +147,9 @@ Thing 6) EQ
     4) lowbandQ
     5) highBand gain
 3 things it can do:
-    1) low shelf shape EQ
-    2) high shelf shape EQ
-    3) peak shape EQ
+    1) Cut out low end
+    2) cut out high end
+    3) boost certain freqs
  */
 
 /*
@@ -183,11 +183,11 @@ Thing 8) Monitor Section
 /*
 Thing 9) Aux Section
 5 properties:
-    1) aux send 1
-    2) aux send 2
-    3) aux send 3
-    4) aux send 1 level
-    5) aux send 2 level
+    1) aux send 1 level
+    2) aux send 2 level
+    3) aux send 3 level
+    4) aux send 4 level
+    5) aux send 5 level
 3 things it can do:
     1) route audio to selected sends
     2) adjust gain sent to each send
