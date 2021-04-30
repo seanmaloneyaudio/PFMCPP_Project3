@@ -125,73 +125,73 @@ Thing 4) Laptop
  */
 
 /*
-Thing 5)
+Thing 5) Compressor
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) Hysteresis
+    2) Gain 
+    3) Threshold
+    4) Range
+    5) Ratio
 3 things it can do:
-    1)
-    2)
-    3)
+    1) Limit 
+    2) Compress 
+    3) Expand 
  */
 
 /*
-Thing 6)
+Thing 6) EQ 
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) highBandQ
+    2) midBand1Q
+    3) midband2Q
+    4) lowbandQ
+    5) highBand gain
 3 things it can do:
-    1)
-    2)
-    3)
+    1) low shelf shape EQ
+    2) high shelf shape EQ
+    3) peak shape EQ
  */
 
 /*
-Thing 7)
+Thing 7) Input Section
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) line gain
+    2) mic gain
+    3) pad amount
+    4) input noise in dB
+    5) dynamic range
 3 things it can do:
-    1)
-    2)
-    3)
+    1) Bring signal from mic to line level
+    2) add/subtract gain of line level input
+    3) Pad a signal 30 dB
  */
 
 /*
-Thing 8)
+Thing 8) Monitor Section
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) selected cue output numbers
+    2) selected master output numbers
+    3) master level
+    4) headphone level
+    5) talkback level
 3 things it can do:
-    1)
-    2)
-    3)
+    1) Route audio to different cues/playback outputs
+    2) adjust master level
+    3) adjust talkback level
  */
 
 /*
-Thing 9)
+Thing 9) Aux Section
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) aux send 1
+    2) aux send 2
+    3) aux send 3
+    4) aux send 1 level
+    5) aux send 2 level
 3 things it can do:
-    1)
-    2)
-    3)
+    1) route audio to selected sends
+    2) adjust gain sent to each send
+    3) Group two mono sends as stereo
  */
 
 /*
