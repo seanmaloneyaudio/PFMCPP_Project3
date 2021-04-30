@@ -114,17 +114,17 @@ Thing 4) Laptop
  */
 
 /*
-Thing 10) MIDI Controller
+Thing 10) Arsenal Soccer Club
 5 properties:
-    1) Keys
-    2) Pads
-    3) Knobs
-    4) Sliders
-    5) Buttons
+    1) Goalie
+    2) Head Coach
+    3) Striker
+    4) Fan
+    5) Referree
 3 things it can do:
-    1) Send MIDI note data
-    2) Send MIDI CC data
-    3) Send MIDI velocity data
+    1) Host home game
+    2) Visit away game
+    3) Celebrate championship
  */
 
 /*
