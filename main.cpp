@@ -114,17 +114,17 @@ Thing 4) Laptop
  */
 
 /*
-Thing 10) Arsenal Football Club
+Thing 10) Neve VR Audio Console
 5 properties:
-    1) Goalie
-    2) Head Coach
-    3) Striker
-    4) Fan
-    5) Referree
+    1) Compressor
+    2) EQ
+    3) Input Section
+    4) Monitor Section
+    5) Aux Section
 3 things it can do:
-    1) Host home game
-    2) Visit away game
-    3) Celebrate championship
+    1) Record incoming audio
+    2) Compress audio
+    3) Send to multiple outputs
  */
 
 /*
