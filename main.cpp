@@ -124,22 +124,43 @@ Thing 1) Restaurant
     4) Size of restaurant in square feet
     5) Amount of profit each day
 3 things it can do:
-    1) Feed hungry customers
+    1) Open the kitchen
     2) Charge customers
     3) Provide salary to employees
  */
  struct Restaurant 
  {
-//Number of tables
-int numTables = 10;
-//Number of employees
-int numEmployees = 25;
-//Restaurant name
-std::string restaurantName = "Joe's";
-//Size of restaurant in square feet
-int restaurantArea = 1000;
-//Amount of profit each day
-float dailyProfit = 2600.89f;
+    //Number of tables
+    int numTables = 10;
+    //Number of employees
+    int numEmployees = 25;
+    //Restaurant name
+    std::string restaurantName = "Joe's";
+    //Size of restaurant in square feet
+    int restaurantArea = 1000;
+    //Amount of profit each day
+    float dailyProfit = 2600.89f;
+
+    struct Kitchen
+    {
+        std::string specialOfTheDay;
+        std::string headChef;
+        bool isServingBreakfast;
+        int numWorkers;
+        bool isClean;
+
+        void makeMeal(std::string order);
+        int getOrderCount(bool isOpen);
+        int waitTimeInMinutes(bool isBusy);
+    };
+    //Open the kitchen
+    void openKitchen(Kitchen kitchen);
+    //Charge customers
+    float charge(float foodCost, float taxPercentage = 8.2f);
+    //Provide salary to employees
+    float payDay(int numEmployees, float chefSalary, float cashierSalary, float waiterSalary);
+
+    Kitchen saturdayBrunch;
  };
 /*
 Thing 2) Family
@@ -166,6 +187,23 @@ Thing 2) Family
     std::string momName = "Betty";
     // Father's name
     std::string dadName = "Joe";
+
+    struct Kid {
+        std::string kidName;
+        int age;
+        bool playsSports;
+        bool likesArt;
+        bool playsAnInstrument;
+    };
+
+    // Eat dinner together
+    void eatDinner(bool tacoTuesday);
+    // Go to church
+    bool goToChurch(bool isSunday);
+    // Bicker
+    void bicker(Kid kid1, Kid kid2);
+
+    Kid newBorn;
  };
 
 /*
@@ -194,6 +232,12 @@ struct Synthesizer
     float outputGain = 34.4f;
     // Number of outputs
     int numOutputChannels = 2;
+    // Play sound
+    void playSound(int numOutputs);
+    // Change output gain amount
+    void adjustGain(float newAmount);
+    // Change number of outputs
+    void changeOutputs(int newOutputAmount);
 };
 /*
 Thing 4) Laptop
@@ -220,6 +264,15 @@ Thing 4) Laptop
     float screenSize = 13.2f;
     // Manufacturer
     std::string manufacturer = "Apple";
+
+
+
+    // Compile code
+    void compile(bool hasSyntaxErrors);
+    // Browse the web
+    void browseWeb(std::string searchText);
+    // Play movies
+    void playMovie(std::string movieTitle);
  };
 
 /*
@@ -247,6 +300,13 @@ Thing 5) Compressor
     float rangeInDB = 5.7f;
     // Ratio
     float ratio = 6.4f;
+
+    // Limit 
+    float limitSignal(float inputSignalGain, float maxOutputGain);
+    // Compress 
+    float compress(float inputSignal, bool vocal, bool guitar, bool drums);
+    // Expand 
+    float expand(float desiredDynamicRange);
  };
 
 /*
@@ -274,6 +334,13 @@ Thing 6) EQ
     float lowBandQ = 2.3f;
     // highBand gain
     float highBandGainInDB = 13.5f;
+
+    //Cut out low end
+    void lowCut(float freq = 500.0f, int filterOrder = 2);
+    //Cut out high end
+    void highCut(float freq = 8000.0f, int filterOrder = 1);
+    //Boost certain freqs
+    void boost(float centerFreq, int desiredQ);
  };
 
 /*
@@ -301,6 +368,13 @@ Thing 7) Input Section
     float inputNoiseInDB = 0.12f;
     // dynamic range
     float dynamicRange = 116.5f;
+
+    //Bring signal from mic to line level
+    void micToLine(float micInputLevel, float desiredLevel);
+    //Add/subtract gain of line level input
+    void adjustLineLevel(float currentLineLevel, float desiredLevel); 
+    //Pad a signal 30 dB
+    float pad(float currentLevel);
  };
 
 /*
@@ -329,6 +403,13 @@ struct MonitorSection
     float headphoneLevelInDB = 12.5f;
     // talkback level
     float talkbackLevelInDB = 20.4f;
+
+    //Route audio to different cues/playback outputs
+    void route(int cueOutputToAdd, int masterOutputToAdd);
+    //Adjust master level
+    float adjustMasterLevel(float currentMasterLevel, float amountToAdd);
+    //Adjust talkback level
+    float adjustTalkbackLevel(float currentTalkbackLevel, float amountToAdd);
 };
 /*
 Thing 9) Aux Section
@@ -343,7 +424,7 @@ Thing 9) Aux Section
     2) adjust gain sent to each send
     3) Group two mono sends as stereo
  */
- struct auxSection 
+ struct AuxSection 
  {
     // aux send 1 level
     float auxSend1Level = 20.f;
@@ -355,6 +436,13 @@ Thing 9) Aux Section
     float auxSend4Level = 14.f;
     // aux send 5 level
     float auxSend5Level = 2.6f;
+
+    //Route audio to selected sends
+    void routeToSend(bool send1, bool send2, bool send3, bool send4, bool send5);
+    //Adjust gain sent to each send
+    void newGain(float send1Gain, float send2Gain, float send3Gain, float send4Gain, float send5Gain);
+    //Group two mono sends as stereo
+    void createStereoSend(std::string leftAuxSend, std::string rightAuxSend);
  };
 
 /*
@@ -373,14 +461,22 @@ Thing 10) Neve VR Audio Console
  struct NeveVRConsole
  {
     // Compressor
-    struct Compressor 
-    {
-        
-    };
+    Compressor neveLimiterCompressor;
     // EQ
+    EQ parametricEQ;
     // Input Section
+    InputSection input1;
     // Monitor Section
+    MonitorSection neveMonitorSection;
     // Aux Section
+    AuxSection neveAuxSection;
+
+    //Record incoming audio
+    void record(InputSection inputs);
+    //Compress audio
+    void compressChannel(int channel, Compressor compressorSettings);
+    //Send to multiple outputs
+    void chooseOutputs(MonitorSection monitorOuts, AuxSection auxOuts);
  };
 
 /*
