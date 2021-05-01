@@ -27,11 +27,12 @@ I recommend compiling after finishing each one and making sure it compiles
 without errors or warnings before moving on to writing the next UDT. 
 
 1) define an empty struct for each of your 10 types. i.e.:
-*/
 struct CarWash
 {
 
 };
+*/
+
 /*
 2) Copy your 5 properties & 3 actions into the empty struct body.
     - comment them out.
@@ -114,7 +115,6 @@ struct CarWash //                                   1) define an empty struct fo
     Car carBeingServiced;  
 };
 
-
 /*
 Thing 1) Restaurant
 5 properties:
@@ -128,7 +128,19 @@ Thing 1) Restaurant
     2) Charge customers
     3) Provide salary to employees
  */
-
+ struct Restaurant 
+ {
+//Number of tables
+int numTables = 10;
+//Number of employees
+int numEmployees = 25;
+//Restaurant name
+std::string restaurantName = "Joe's";
+//Size of restaurant in square feet
+int restaurantArea = 1000;
+//Amount of profit each day
+float dailyProfit = 2600.89f;
+ };
 /*
 Thing 2) Family
 5 properties:
@@ -142,6 +154,19 @@ Thing 2) Family
     2) Go to church
     3) Bicker
  */
+ struct Family 
+ {
+    // Size of family
+    int familySize = 5;
+    // Number of kids
+    int numKids = 3;
+    // Number of parents
+    int numParents = 2;
+    // Mother's name
+    std::string momName = "Betty";
+    // Father's name
+    std::string dadName = "Joe";
+ };
 
 /*
 Thing 3) Synthesizer
@@ -157,6 +182,19 @@ Thing 3) Synthesizer
     3) Change number of outputs
  */
 
+struct Synthesizer 
+{
+    // Number of keys
+    int numKeys = 88;
+    // Number of synth voices
+    int numVoices = 8;
+    // Name of synth
+    std::string synthName = "Prophet Rev 2";
+    // Output gain
+    float outputGain = 34.4f;
+    // Number of outputs
+    int numOutputChannels = 2;
+};
 /*
 Thing 4) Laptop
 5 properties:
@@ -170,6 +208,19 @@ Thing 4) Laptop
     2) Browse the web
     3) Play movies
  */
+ struct Laptop
+ {
+    // Model year
+    int modelYear = 2019;
+    // Amount of RAM
+    int ramInGb = 8;
+    // Amount of storage
+    int storageInGb = 256;
+    // Screen size
+    float screenSize = 13.2f;
+    // Manufacturer
+    std::string manufacturer = "Apple";
+ };
 
 /*
 Thing 5) Compressor
@@ -184,6 +235,19 @@ Thing 5) Compressor
     2) Compress 
     3) Expand 
  */
+ struct Compressor 
+ {
+    // Hysteresis
+    float hysteresis = 6.7f;
+    // Gain 
+    float gainInDB = 4.5f;
+    // Threshold
+    float thresholdInDB = 23.4f;
+    // Range
+    float rangeInDB = 5.7f;
+    // Ratio
+    float ratio = 6.4f;
+ };
 
 /*
 Thing 6) EQ 
@@ -198,6 +262,19 @@ Thing 6) EQ
     2) cut out high end
     3) boost certain freqs
  */
+ struct EQ 
+ {
+    // highBandQ
+    float highBandQ = 3.5f;
+    // midBand1Q
+    float midBand1Q = 6.2f;
+    // midband2Q
+    float midBand2Q = 3.5f;
+    // lowbandQ
+    float lowBandQ = 2.3f;
+    // highBand gain
+    float highBandGainInDB = 13.5f;
+ };
 
 /*
 Thing 7) Input Section
@@ -212,6 +289,19 @@ Thing 7) Input Section
     2) add/subtract gain of line level input
     3) Pad a signal 30 dB
  */
+ struct InputSection 
+ {
+    // line gain
+    float lineGainInDB = 23.4f;
+    // mic gain
+    float micGainInDB = 1.3f; 
+    // pad amount
+    float padInDB = -30.0f;
+    // input noise in dB
+    float inputNoiseInDB = 0.12f;
+    // dynamic range
+    float dynamicRange = 116.5f;
+ };
 
 /*
 Thing 8) Monitor Section
@@ -227,6 +317,19 @@ Thing 8) Monitor Section
     3) adjust talkback level
  */
 
+struct MonitorSection 
+{
+    // selected cue output numbers
+    int cueOutput = 4;
+    // selected master output numbers
+    int masterOutput = 2;
+    // master level
+    float masterLevelInDB = 55.6f;
+    // headphone level
+    float headphoneLevelInDB = 12.5f;
+    // talkback level
+    float talkbackLevelInDB = 20.4f;
+};
 /*
 Thing 9) Aux Section
 5 properties:
@@ -240,6 +343,19 @@ Thing 9) Aux Section
     2) adjust gain sent to each send
     3) Group two mono sends as stereo
  */
+ struct auxSection 
+ {
+    // aux send 1 level
+    float auxSend1Level = 20.f;
+    // aux send 2 level
+    float auxSend2Level = 10.f;
+    // aux send 3 level
+    float auxSend3Level = 44.5f;
+    // aux send 4 level
+    float auxSend4Level = 14.f;
+    // aux send 5 level
+    float auxSend5Level = 2.6f;
+ };
 
 /*
 Thing 10) Neve VR Audio Console
@@ -254,6 +370,18 @@ Thing 10) Neve VR Audio Console
     2) Compress audio
     3) Send to multiple outputs
  */
+ struct NeveVRConsole
+ {
+    // Compressor
+    struct Compressor 
+    {
+        
+    };
+    // EQ
+    // Input Section
+    // Monitor Section
+    // Aux Section
+ };
 
 /*
  MAKE SURE YOU ARE NOT ON THE MASTER BRANCH
