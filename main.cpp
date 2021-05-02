@@ -143,11 +143,11 @@ Thing 1) Restaurant
 
     struct Kitchen
     {
-        std::string specialOfTheDay;
-        std::string headChef;
-        bool isServingBreakfast;
-        int numWorkers;
-        bool isClean;
+        std::string specialOfTheDay = "Tomato soup";
+        std::string headChef = "Gordon Ramsey";
+        bool isServingBreakfast = true;
+        int numWorkers = 15;
+        bool isClean = false;
 
         void makeMeal(std::string order);
         int getOrderCount(bool isOpen);
@@ -188,12 +188,13 @@ Thing 2) Family
     // Father's name
     std::string dadName = "Joe";
 
-    struct Kid {
-        std::string kidName;
-        int age;
-        bool playsSports;
-        bool likesArt;
-        bool playsAnInstrument;
+    struct Kid 
+    {
+        std::string kidName = "JimBob";
+        int age = 0;
+        bool playsSports = false;
+        bool likesArt = true;
+        bool playsAnInstrument = false;
     };
 
     // Eat dinner together
