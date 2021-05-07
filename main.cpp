@@ -108,6 +108,43 @@ struct CarWash
     You'll need to insert the Person struct from the video in the space below.
  */
 
+struct Limb
+{
+    int footLength;
+    int legLength;
+    bool leftFootFirst;
+
+    int stepSize();
+    void stepForward();
+};
+
+int Limb::stepSize()
+{
+    return footLength + legLength;
+}
+
+void Limb::stepForward()
+{
+    if(leftFootFirst)
+    {
+        leftFootFirst = false;
+    }
+    leftFootFirst = true;
+}
+
+struct Person
+{
+    int age;
+    int height;
+    float hairLength;
+    float GPA;
+    unsigned int SATScore;
+    int distanceTraveled;
+    Limb leftFoot;
+    Limb rightFoot;
+
+    void run(int howFast, bool startWithLeftFoot);
+};
 
 
 
@@ -145,10 +182,31 @@ struct CarWash
     };
     void openKitchen(Kitchen kitchen);
     float charge(float foodCost, float taxPercentage = 8.2f);
-    float payDay(int numEmployees, float chefSalary, float cashierSalary, float waiterSalary);
+    float payDay(int numWaiters, float chefSalary, float cashierSalary, float waiterSalary);
 
     Kitchen saturdayBrunch;
  };
+
+ void Restaurant::openKitchen(Kitchen kitchen)
+ {
+     kitchen.isClean = true;
+     kitchen.isServingBreakfast = true;
+     kitchen.numWorkers = 20;
+ }
+
+float Restaurant::charge(float foodCost, float taxPercentage)
+{
+    float taxCost = foodCost * taxPercentage;
+    float total = taxCost + foodCost; 
+    return total;
+}
+
+float Restaurant::payDay(int numWaiters, float chefSalary, float cashierSalary, float waiterSalary)
+{
+    float total;
+    total = chefSalary/12 + cashierSalary/12 + (numWaiters * waiterSalary)/12;
+    return total;
+}
 
  struct Family 
  {
@@ -174,6 +232,30 @@ struct CarWash
     Kid newBorn;
  };
 
+void Family::eatDinner(bool tacoTuesday)
+{
+    if(tacoTuesday)
+    {
+        std::cout << "Tacos for dinner.";
+    }
+    std::cout << "Hotdogs again...";
+}
+
+bool Family::goToChurch(bool isSunday)
+{
+    if(isSunday) return true;
+    else return false;
+}
+
+void Family::bicker(Kid kid1, Kid kid2)
+{
+    if(kid1.playsSports && kid2.likesArt)
+    {
+        std::cout << "Loser!!";
+        std::cout << "Jock!!";
+    }
+}
+
 struct Synthesizer 
 {
     int numKeys = 88;
@@ -181,11 +263,32 @@ struct Synthesizer
     std::string synthName = "Prophet Rev 2";
     float outputGain = 34.4f;
     int numOutputChannels = 2;
+
     void playSound(int numOutputs);
     void adjustGain(float newAmount);
     void changeOutputs(int newOutputAmount);
 };
+void Synthesizer::playSound(int numOutputs)
+{
+    if(numOutputs ==1)
+    {
+        std::cout << "Playing audio in " << numOutputs << " output.";
+    }
+    else 
+    {
+        std::cout << "Playing audio in " << numOutputs << " outputs.";
+    }
+}
 
+void Synthesizer::adjustGain(float newAmount)
+{
+    std::cout << "Gain has been set to " << newAmount;
+}
+
+void Synthesizer::changeOutputs(int newOutputAmount)
+{
+    std::cout << "Number of available outputs: " << newOutputAmount;
+}
  struct Laptop
  {
     int modelYear = 2019;
@@ -198,6 +301,23 @@ struct Synthesizer
     void browseWeb(std::string searchText);
     void playMovie(std::string movieTitle);
  };
+
+void Laptop::compile(bool hasSyntaxErrors)
+{
+    if(hasSyntaxErrors)
+    {
+        std::cout << "Cant compile";
+    } 
+    else std::cout << "Compiling...";
+}
+void Laptop::browseWeb(std::string searchText)
+{
+    std::cout << "Google input: " << searchText;
+}
+void Laptop::playMovie(std::string movieTitle)
+{
+    std::cout << "Now playing " << movieTitle;
+}
 
  struct Compressor 
  {
@@ -212,6 +332,38 @@ struct Synthesizer
     float expand(float desiredDynamicRange);
  };
 
+float Compressor::limitSignal(float inputSignalGain, float maxOutputGain)
+{
+    if(inputSignalGain > maxOutputGain)
+    {
+        inputSignalGain = maxOutputGain;
+    }
+    return inputSignalGain;
+}
+float Compressor::compress(float inputSignal, bool vocal, bool guitar, bool drums)
+{
+    float compressionRatio = 1.0f;
+    float threshold = 0.0f;
+    if(vocal)
+    {
+        ratio = 3.0;
+    }
+    if(guitar)
+    {
+        ratio = 4.0;
+    }
+    if(drums)
+    {
+        ratio = 6.0;
+    }
+    return inputSignal - ((inputSignal-threshold)/compressionRatio) + threshold;
+}
+float Compressor::expand(float desiredDynamicRange)
+{
+    float lowestOutput = 0;
+    float highestOutput = desiredDynamicRange - lowestOutput;
+    return highestOutput;
+}
  struct EQ 
  {
     float highBandQ = 3.5f;
@@ -225,6 +377,22 @@ struct Synthesizer
     void boost(float centerFreq, int desiredQ);
  };
 
+
+void EQ::lowCut(float freq, int filterOrder)
+{
+    std::cout << "Cutting at " << freq << " Hz with an order of " << filterOrder;
+}
+
+void EQ::highCut(float freq, int filterOrder)
+{
+    std::cout << "Cutting at " << freq << " Hz with an order of " << filterOrder;
+}
+
+void EQ::boost(float centerFreq, int desiredQ)
+{
+    std::cout << "Boosting" << centerFreq << " Hz with a Q factor of " << desiredQ;
+}
+
  struct InputSection 
  {
     float lineGainInDB = 23.4f;
@@ -237,6 +405,20 @@ struct Synthesizer
     void adjustLineLevel(float currentLineLevel, float desiredLevel); 
     float pad(float currentLevel);
  };
+void InputSection::micToLine(float micInputLevel, float desiredLevel)
+{
+    float boosted = desiredLevel - micInputLevel;
+    std::cout << "Brought signal up to line level by " << boosted << "mV.";
+}
+void InputSection::adjustLineLevel(float currentLineLevel, float desiredLevel)
+{
+    float amountChanged = desiredLevel - currentLineLevel;
+    std::cout << "Adjusted by " << amountChanged << "dB.";
+}
+float InputSection::pad(float currentLevel)
+{
+    return currentLevel - 30.0f;
+}
 
 struct MonitorSection 
 {
@@ -250,6 +432,18 @@ struct MonitorSection
     float adjustMasterLevel(float currentMasterLevel, float amountToAdd);
     float adjustTalkbackLevel(float currentTalkbackLevel, float amountToAdd);
 };
+void MonitorSection::route(int cueOutputToAdd, int masterOutputToAdd)
+{
+    std::cout << "Routing to cue " << cueOutputToAdd << " and master output " << masterOutputToAdd;
+}
+float MonitorSection::adjustMasterLevel(float currentMasterLevel, float amountToAdd)
+{
+    return currentMasterLevel = amountToAdd;
+}
+float MonitorSection::adjustTalkbackLevel(float currentTalkbackLevel, float amountToAdd)
+{
+    return currentTalkbackLevel + amountToAdd;
+}
 
  struct AuxSection 
  {
@@ -263,6 +457,42 @@ struct MonitorSection
     void newGain(float send1Gain, float send2Gain, float send3Gain, float send4Gain, float send5Gain);
     void createStereoSend(std::string leftAuxSend, std::string rightAuxSend);
  };
+void AuxSection::routeToSend(bool send1, bool send2, bool send3, bool send4, bool send5)
+{
+    if(send1)
+    {
+        std::cout << "Routed to send 1";
+    }
+    if(send2)
+    {
+        std::cout << "Routed to send 2";
+    }
+    if(send3)
+    {
+        std::cout << "Routed to send 3";
+    }
+    if(send4)
+    {
+        std::cout << "Routed to send 4";
+    }
+        if(send5)
+    {
+        std::cout << "Routed to send 5";
+    }
+}
+
+void AuxSection::newGain(float send1Gain, float send2Gain, float send3Gain, float send4Gain, float send5Gain)
+{
+    std::cout << "Send 1 gain: " << send1Gain;
+    std::cout << "Send 2 gain: " << send2Gain;
+    std::cout << "Send 3 gain: " << send3Gain;
+    std::cout << "Send 4 gain: " << send4Gain;
+    std::cout << "Send 5 gain: " << send5Gain;
+}
+void AuxSection::createStereoSend(std::string leftAuxSend, std::string rightAuxSend)
+{
+    std::cout << "Pairing " << leftAuxSend << " and " << rightAuxSend;
+}
 
  struct NeveVRConsole
  {
@@ -276,6 +506,24 @@ struct MonitorSection
     void compressChannel(int channel, Compressor compressorSettings);
     void chooseOutputs(MonitorSection monitorOuts, AuxSection auxOuts);
  };
+
+void NeveVRConsole::record(InputSection inputs)
+{
+    std::cout << "Recording line input with a gain of " << inputs.lineGainInDB;
+    std::cout << "Recording mic input with a gain of " << inputs.micGainInDB;
+}
+void NeveVRConsole::compressChannel(int channel, Compressor compressorSettings)
+{
+    std::cout << "Compressing channel " << channel << "with a ratio of " << compressorSettings.ratio;
+}
+void NeveVRConsole::chooseOutputs(MonitorSection monitorOuts, AuxSection auxOuts)
+{
+    std::cout << "Monitor output level: " << monitorOuts.masterLevelInDB;
+    std::cout << "Aux output 1 level: " << auxOuts.auxSend1Level;
+    std::cout << "Aux output 2 level: " << auxOuts.auxSend2Level;
+    std::cout << "Aux output 3 level: " << auxOuts.auxSend3Level;
+    std::cout << "Aux output 4 level: " << auxOuts.auxSend4Level;
+}
 
 /*
  MAKE SURE YOU ARE NOT ON THE MASTER BRANCH
