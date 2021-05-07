@@ -146,6 +146,20 @@ struct Person
     void run(int howFast, bool startWithLeftFoot);
 };
 
+void Person::run(int howFast, bool startWithLeftFoot)
+{
+    if(startWithLeftFoot == true)
+    {
+        leftFoot.stepForward();
+        rightFoot.stepForward();
+    }
+    else
+    {
+        rightFoot.stepForward();
+        leftFoot.stepForward();
+    }
+    distanceTraveled += leftFoot.stepSize() + rightFoot.stepSize();
+}
 
 
 
@@ -348,11 +362,11 @@ float Compressor::compress(float inputSignal, bool vocal, bool guitar, bool drum
     {
         ratio = 3.0;
     }
-    if(guitar)
+    else if(guitar)
     {
         ratio = 4.0;
     }
-    if(drums)
+    else if(drums)
     {
         ratio = 6.0;
     }
@@ -454,7 +468,7 @@ float MonitorSection::adjustTalkbackLevel(float currentTalkbackLevel, float amou
     float auxSend5Level = 2.6f;
 
     void routeToSend(bool send1, bool send2, bool send3, bool send4, bool send5);
-    void newGain(float send1Gain, float send2Gain, float send3Gain, float send4Gain, float send5Gain);
+    void setSendGainLevels(float send1Gain, float send2Gain, float send3Gain, float send4Gain, float send5Gain);
     void createStereoSend(std::string leftAuxSend, std::string rightAuxSend);
  };
 void AuxSection::routeToSend(bool send1, bool send2, bool send3, bool send4, bool send5)
@@ -475,13 +489,13 @@ void AuxSection::routeToSend(bool send1, bool send2, bool send3, bool send4, boo
     {
         std::cout << "Routed to send 4";
     }
-        if(send5)
+    if(send5)
     {
         std::cout << "Routed to send 5";
     }
 }
 
-void AuxSection::newGain(float send1Gain, float send2Gain, float send3Gain, float send4Gain, float send5Gain)
+void AuxSection::setSendGainLevels(float send1Gain, float send2Gain, float send3Gain, float send4Gain, float send5Gain)
 {
     std::cout << "Send 1 gain: " << send1Gain;
     std::cout << "Send 2 gain: " << send2Gain;
