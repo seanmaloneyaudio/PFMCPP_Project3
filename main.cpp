@@ -202,9 +202,9 @@ void Person::run(int howFast, bool startWithLeftFoot)
 
  void Restaurant::openKitchen(Kitchen kitchen)
  {
-     kitchen.isClean = true;
-     kitchen.isServingBreakfast = true;
-     kitchen.numWorkers = 20;
+    kitchen.isClean = true;
+    kitchen.isServingBreakfast = true;
+    kitchen.numWorkers = 20;
  }
 
 float Restaurant::charge(float foodCost, float taxPercentage)
@@ -251,13 +251,15 @@ void Family::eatDinner(bool tacoTuesday)
     {
         std::cout << "Tacos for dinner.";
     }
-    std::cout << "Hotdogs again...";
+    else
+    {
+        std::cout << "Hotdogs again...";
+    }
 }
 
 bool Family::goToChurch(bool isSunday)
 {
-    if(isSunday) return true;
-    else return false;
+    return isSunday;
 }
 
 void Family::bicker(Kid kid1, Kid kid2)
@@ -321,7 +323,10 @@ void Laptop::compile(bool hasSyntaxErrors)
     {
         std::cout << "Cant compile";
     } 
-    else std::cout << "Compiling...";
+    else 
+    {
+        std::cout << "Compiling...";
+    }
 }
 void Laptop::browseWeb(std::string searchText)
 {
@@ -445,14 +450,17 @@ struct MonitorSection
     float adjustMasterLevel(float currentMasterLevel, float amountToAdd);
     float adjustTalkbackLevel(float currentTalkbackLevel, float amountToAdd);
 };
+
 void MonitorSection::route(int cueOutputToAdd, int masterOutputToAdd)
 {
     std::cout << "Routing to cue " << cueOutputToAdd << " and master output " << masterOutputToAdd;
 }
+
 float MonitorSection::adjustMasterLevel(float currentMasterLevel, float amountToAdd)
 {
     return currentMasterLevel = amountToAdd;
 }
+
 float MonitorSection::adjustTalkbackLevel(float currentTalkbackLevel, float amountToAdd)
 {
     return currentTalkbackLevel + amountToAdd;
@@ -470,6 +478,7 @@ float MonitorSection::adjustTalkbackLevel(float currentTalkbackLevel, float amou
     void setSendGainLevels(float send1Gain, float send2Gain, float send3Gain, float send4Gain, float send5Gain);
     void createStereoSend(std::string leftAuxSend, std::string rightAuxSend);
  };
+
 void AuxSection::routeToSend(bool send1, bool send2, bool send3, bool send4, bool send5)
 {
     if(send1)
@@ -525,10 +534,12 @@ void NeveVRConsole::record(InputSection inputs)
     std::cout << "Recording line input with a gain of " << inputs.lineGainInDB;
     std::cout << "Recording mic input with a gain of " << inputs.micGainInDB;
 }
+
 void NeveVRConsole::compressChannel(int channel, Compressor compressorSettings)
 {
     std::cout << "Compressing channel " << channel << "with a ratio of " << compressorSettings.ratio;
 }
+
 void NeveVRConsole::chooseOutputs(MonitorSection monitorOuts, AuxSection auxOuts)
 {
     std::cout << "Monitor output level: " << monitorOuts.masterLevelInDB;
