@@ -144,7 +144,7 @@ struct Person
     void run(int howFast, bool startWithLeftFoot);
 };
 
-void Person::run(int howFast, bool startWithLeftFoot) //FIXME: use 'howFast' in this function.  maybe print the speed 
+void Person::run(int howFast, bool startWithLeftFoot) 
 { 
     if(startWithLeftFoot == true)
     {
