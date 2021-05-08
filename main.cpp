@@ -113,6 +113,7 @@ struct Limb
     int footLength;
     int legLength;
     bool leftFootFirst;
+    bool rightFootFirst;
 
     int stepSize();
     void stepForward();
@@ -125,11 +126,8 @@ int Limb::stepSize()
 
 void Limb::stepForward()
 {
-    if(leftFootFirst)
-    {
-        leftFootFirst = false;
-    }
-    leftFootFirst = true;
+    leftFootFirst = !leftFootFirst;
+    rightFootFirst = !rightFootFirst; 
 }
 
 struct Person
@@ -146,8 +144,8 @@ struct Person
     void run(int howFast, bool startWithLeftFoot);
 };
 
-void Person::run(int howFast, bool startWithLeftFoot)
-{
+void Person::run(int howFast, bool startWithLeftFoot) //FIXME: use 'howFast' in this function.  maybe print the speed 
+{ 
     if(startWithLeftFoot == true)
     {
         leftFoot.stepForward();
@@ -159,6 +157,7 @@ void Person::run(int howFast, bool startWithLeftFoot)
         leftFoot.stepForward();
     }
     distanceTraveled += leftFoot.stepSize() + rightFoot.stepSize();
+    std::cout << "You are running at a speed of " << howFast << "mph.";
 }
 
 
