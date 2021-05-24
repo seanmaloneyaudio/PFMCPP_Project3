@@ -93,20 +93,20 @@ int main()
     //Kitchen saturdayBrunch;
  };
 
- Restaurant::Restaurant()
- {
+Restaurant::Restaurant()
+{
     numTables = 0;
     numEmployees = 0;
     restaurantName = "New Restaurant";
- }
+}
 
- void Restaurant::openKitchen(Kitchen kitchen)
- {
+void Restaurant::openKitchen(Kitchen kitchen)
+{
     kitchen.isClean = true;
     kitchen.isServingBreakfast = true;
     kitchen.numWorkers = 20;
     std::cout << "Kitchen is open!";
- }
+}
 
 float Restaurant::charge(float foodCost, float taxPercentage)
 {
@@ -122,8 +122,8 @@ float Restaurant::payDay(int numWaiters, float chefSalary, float cashierSalary, 
     return total;
 }
 
- struct Family 
- {
+struct Family 
+{
     Family();
     int familySize = 5;
     int numKids = 3;
@@ -145,14 +145,14 @@ float Restaurant::payDay(int numWaiters, float chefSalary, float cashierSalary, 
     void bicker(Kid kid1, Kid kid2);
 
     Kid newBorn;
- };
+};
 
- Family::Family() 
- {
+Family::Family() 
+{
     familySize = 0;
     numKids = 0;
     numParents = 0;
- }
+}
 
 void Family::eatDinner(bool tacoTuesday)
 {
